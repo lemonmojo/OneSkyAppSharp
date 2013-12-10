@@ -62,6 +62,17 @@ namespace com.lemonmojo.OneSkyAppSharp
 
 			return SendGetRequest(methodName, null) as string;
 		}
+
+		/// <summary>
+		/// Languages - list enabled languages of a project group
+		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/project_group.md#languages---list-enabled-languages-of-a-project-group
+		/// </summary>
+		public string ProjectGroup_Languages(string projectGroupId)
+		{
+			string methodName = string.Format("project-groups/{0}/languages", projectGroupId);
+
+			return SendGetRequest(methodName) as string;
+		}
 		#endregion Project Group
 
 		#region Translation
