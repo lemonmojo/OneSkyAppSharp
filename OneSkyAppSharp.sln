@@ -1,9 +1,15 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSkyAppTool", "OneSkyAppTool\OneSkyAppTool.csproj", "{2C948AB6-AFF0-4AA9-8414-A1B0B0B81302}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSkyAppSharp", "OneSkyAppSharp\OneSkyAppSharp.csproj", "{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED069D82-F842-4CBC-8275-3738B920F198}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +25,8 @@ Global
 		{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}.Debug|x86.Build.0 = Debug|Any CPU
 		{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}.Release|x86.ActiveCfg = Release|Any CPU
 		{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = OneSkyAppTool\OneSkyAppTool.csproj
