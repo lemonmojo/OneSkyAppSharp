@@ -7,23 +7,68 @@ namespace com.lemonmojo.OneSkyAppSharp
 {
 	public class OneSkyAppAPI
 	{
-		private const string BASE_URL = "https://platform.api.onesky.io/1/";
-
 		#region Public Members
 		public string PublicKey { get; private set; }
 		public string SecretKey { get; private set; }
+		#endregion Public Members
 
+		#region Constructor
 		public OneSkyAppAPI(string publicKey, string secretKey)
 		{
+			if (string.IsNullOrWhiteSpace(publicKey)) {
+				throw new ArgumentException("Public Key must not be empty.");
+			}
+
+			if (string.IsNullOrWhiteSpace(secretKey)) {
+				throw new ArgumentException("Secret Key must not be empty.");
+			}
+
 			this.PublicKey = publicKey;
 			this.SecretKey = secretKey;
-		}
 
+		}
+		#endregion Constructor
+
+		#region Private Methods
+		private object SendGetRequest(string methodName, Dictionary<string, string> arguments = null)
+		{
+			return OneSkyAppAPIImplementation.SendGetRequest(
+				this.PublicKey, 
+				this.SecretKey,
+				methodName,
+				arguments
+			);
+		}
+		#endregion Private Methods
+
+		#region API Calls
+		#region Project Group
+		/// <summary>
+		/// List - retrieve all project groups
+		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/project_group.md#list---retrieve-all-project-groups
+		/// </summary>
 		public string ProjectGroup_List()
 		{
 			return SendGetRequest("project-groups") as string;
 		}
 
+		/// <summary>
+		/// Show - retrieve details of a project group
+		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/project_group.md#show---retrieve-details-of-a-project-group
+		/// </summary>
+		public string ProjectGroup_Show(string projectGroupId)
+		{
+			string methodName = string.Format("project-groups/{0}", projectGroupId);
+
+			return SendGetRequest(methodName, null) as string;
+		}
+		#endregion Project Group
+
+		#region Translation
+		/// <summary>
+		/// Export - export translations in files
+		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/translation.md#export---export-translations-in-files
+		/// </summary>
 		public byte[] Translation_Export(string projectId, string locale, string sourceFileName, string exportFileName = null)
 		{
 			string methodName = string.Format("projects/{0}/translations", projectId);
@@ -38,96 +83,29 @@ namespace com.lemonmojo.OneSkyAppSharp
 
 			return SendGetRequest(methodName, args) as byte[];
 		}
-		#endregion Public Members
+		#endregion Translation
 
-		#region Private Members
-		private string BuildUrl(string methodName, Dictionary<string, string> arguments)
+		#region Locale
+		/// <summary>
+		/// List - list all locales
+		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/locale.md#list---list-all-locales
+		/// </summary>
+		public string Locale_List()
 		{
-			if (arguments == null) {
-				arguments = new Dictionary<string, string>();
-			}
-
-			string timeStamp = DateTime.Now.ToUnixTimestamp().ToString();
-			string hash = (timeStamp + this.SecretKey).CalculateMD5Hash().ToLower();
-
-			arguments["api_key"] = this.PublicKey;
-			arguments["timestamp"] = timeStamp;
-			arguments["dev_hash"] = hash;
-
-			string argsStr = ArgumentStringFromDictionary(arguments);
-
-			string url = string.Format("{0}{1}{2}", BASE_URL, methodName, argsStr);
-
-			return url;
+			return SendGetRequest("locales") as string;
 		}
+		#endregion Locale
 
-		private string ArgumentStringFromDictionary(Dictionary<string, string> arguments)
+		#region Project type
+		/// <summary>
+		/// List - list all project types
+		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/project_type.md#list---list-all-project-types
+		/// </summary>
+		public string ProjectType_List()
 		{
-			string args = string.Empty;
-
-			bool firstRun = true;
-
-			foreach (string arg in arguments.Keys) {
-				string val = arguments[arg];
-				char sep = '&';
-
-				if (firstRun) {
-					sep = '?';
-				}
-
-				args += string.Format("{0}{1}={2}", sep, arg, val);
-
-				firstRun = false;
-			}
-
-			return args;
+			return SendGetRequest("project-types") as string;
 		}
-
-		private object SendGetRequest(string methodName, Dictionary<string, string> arguments = null)
-		{
-			string url = BuildUrl(methodName, arguments);
-			Uri uri = new Uri(url);
-
-			return SendGetRequest(uri);
-		}
-
-		private object SendGetRequest(Uri uri)
-		{
-			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-			request.Method = "GET";
-			request.ContentType = "application/json";
-
-			WebResponse webResponse = request.GetResponse();
-
-			if (webResponse == null) {
-				throw new Exception("No response");
-			}
-
-			using (Stream webStream = webResponse.GetResponseStream()) {
-				if (webStream == null) {
-					throw new Exception("No response stream");
-				}
-
-				string contentType = webResponse.ContentType.ToLower();
-
-				using (StreamReader responseReader = new StreamReader(webStream)) {
-					if (contentType == "application/json") {
-						string response = responseReader.ReadToEnd();
-						return response;
-					} else if (contentType == "application/zip") {
-						byte[] bytes = default(byte[]);
-
-						using (MemoryStream memStream = new MemoryStream()) {
-							responseReader.BaseStream.CopyTo(memStream);
-							bytes = memStream.ToArray();
-							return bytes;
-						}
-					} else {
-						throw new Exception("Unknown content type in response.");
-					}
-				}
-			}
-		}
-		#endregion Private Members
+		#endregion Project type
+		#endregion API Calls
 	}
 }
