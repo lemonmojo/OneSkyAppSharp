@@ -1,4 +1,4 @@
-OneSkyAppSharp
+OneSkyApp#
 ==============
 
-A Mono compatible implementation of the OneSkyApp API in C#.
+OneSkyApp# is a mono compatible implementation of the OneSkyApp API written in C#.
