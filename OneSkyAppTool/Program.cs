@@ -34,6 +34,23 @@ namespace com.lemonmojo.OneSkyAppTool
 				args[1]
 			);
 		}
+
+		private static void ExportTranslationSample()
+		{
+			System.IO.File.WriteAllBytes(
+				"/Path/File.zip", // Output Filepath
+				com.lemonmojo.OneSkyAppSharp.API.Translation.TranslationAPI.Export(
+					1234, // Project ID
+					"en", // Locale
+					"Localizable.strings", // Source Filename
+					null, // Export Filename
+					new com.lemonmojo.OneSkyAppSharp.APIConfiguration(
+						"ABC123", // Public Key
+						"123DEF" // Secret Key
+					)
+				).Data
+			);
+		}
 		#endregion General Stuff
 
 		#region Main App
