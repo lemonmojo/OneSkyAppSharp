@@ -6,5 +6,8 @@ OneSkyAppSharp is a mono compatible implementation of the OneSkyApp API written 
 * __OneSkyAppSharp__: This is the main library project that contains all implemented OneSkyApp API calls.
 * __OneSkyAppTool__: This is a console app project that can be used to automate build processes by downloading localization files using the OneSkyApp API.
 
+### Dependencies
+* [__RestSharp__](http://restsharp.org/)
+
 ### State of the library
 Because this library is mainly developed for my own purposes, only the functions I personally use are currently implemented. However, pull requests are very welcome!

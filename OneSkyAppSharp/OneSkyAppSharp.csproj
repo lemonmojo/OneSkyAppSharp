@@ -30,12 +30,35 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="RestSharp">
+      <HintPath>Libraries\RestSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OneSkyAppAPI.cs" />
-    <Compile Include="OneSkyAppUtils.cs" />
-    <Compile Include="OneSkyAppAPIImplementation.cs" />
+    <Compile Include="API\Locale.cs" />
+    <Compile Include="APIConfiguration.cs" />
+    <Compile Include="API\ProjectGroup.cs" />
+    <Compile Include="BaseResponse.cs" />
+    <Compile Include="APIBase.cs" />
+    <Compile Include="Metadata.cs" />
+    <Compile Include="API\Translation.cs" />
+    <Compile Include="API\Project.cs" />
+    <Compile Include="API\File.cs" />
+    <Compile Include="API\ImportTask.cs" />
+    <Compile Include="API\Quotation.cs" />
+    <Compile Include="API\Order.cs" />
+    <Compile Include="API\Screenshot.cs" />
+    <Compile Include="API\ProjectType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="API\" />
+    <Folder Include="Libraries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libraries\RestSharp.dll" />
+    <None Include="Libraries\RestSharp.dll.mdb" />
+    <None Include="Libraries\RestSharp.xml" />
+  </ItemGroup>
 </Project>
