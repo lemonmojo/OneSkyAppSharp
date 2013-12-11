@@ -50,11 +50,22 @@
     <Compile Include="API\Order.cs" />
     <Compile Include="API\Screenshot.cs" />
     <Compile Include="API\ProjectType.cs" />
+    <Compile Include="Data\Locale.cs" />
+    <Compile Include="Data\File.cs" />
+    <Compile Include="Data\ImportTask.cs" />
+    <Compile Include="Data\Order.cs" />
+    <Compile Include="Data\ProjectGroup.cs" />
+    <Compile Include="Data\Project.cs" />
+    <Compile Include="Data\ProjectType.cs" />
+    <Compile Include="Data\Quotation.cs" />
+    <Compile Include="Data\Screenshot.cs" />
+    <Compile Include="Data\Translation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="API\" />
     <Folder Include="Libraries\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\RestSharp.dll" />

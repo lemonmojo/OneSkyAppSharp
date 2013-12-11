@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace com.lemonmojo.OneSkyAppSharp.API
+namespace com.lemonmojo.OneSkyAppSharp.API.Screenshot
 {
 	/// <summary>
-	/// Screenshot
-	/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/screenshot.md
-	/// API implementation status: 0/1
+	/// Screenshot (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/screenshot.md"/>)
 	/// </summary>
-	public static class Screenshot
+	/// <remarks>
+	/// API implementation status: 0/1
+	/// </remarks>
+	public static class ScreenshotAPI
 	{
 
 	}

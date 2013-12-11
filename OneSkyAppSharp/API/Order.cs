@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace com.lemonmojo.OneSkyAppSharp.API
+namespace com.lemonmojo.OneSkyAppSharp.API.Order
 {
 	/// <summary>
-	/// Order
-	/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/order.md
-	/// API implementation status: 0/3
+	/// Order (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/order.md"/>)
 	/// </summary>
-	public static class Order
+	/// <remarks>
+	/// API implementation status: 0/3
+	/// </remarks>
+	public static class OrderAPI
 	{
 
 	}

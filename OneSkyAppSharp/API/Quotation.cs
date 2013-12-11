@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace com.lemonmojo.OneSkyAppSharp.API
+namespace com.lemonmojo.OneSkyAppSharp.API.Quotation
 {
 	/// <summary>
-	/// Quotation
-	/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/quotation.md
-	/// API implementation status: 0/1
+	/// Quotation (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/quotation.md"/>)
 	/// </summary>
-	public static class Quotation
+	/// <remarks>
+	/// API implementation status: 0/1
+	/// </remarks>
+	public static class QuotationAPI
 	{
 
 	}

@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 
-namespace com.lemonmojo.OneSkyAppSharp.API
+namespace com.lemonmojo.OneSkyAppSharp.API.Translation
 {
 	/// <summary>
-	/// Translation
-	/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/translation.md
-	/// API implementation status: 2/2
+	/// Translation (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/translation.md"/>)
 	/// </summary>
-	public static class Translation
+	/// <remarks>
+	/// API implementation status: 2/2
+	/// </remarks>
+	public static class TranslationAPI
 	{
 		/// <summary>
 		/// Export - export translations in files
@@ -58,38 +59,5 @@ namespace com.lemonmojo.OneSkyAppSharp.API
 
 			return APIBase.GetResponse<TranslationStatusResponse>(configuration, methodName, args);
 		}
-	}
-
-	public class TranslationExportResponse
-	{
-		public TranslationExportMetadata Meta { get; set; }
-		public byte[] Data { get; set; }
-	}
-
-	public class TranslationExportMetadata
-	{
-		public TranslationExportStatus Status { get; set; }
-	}
-
-	public enum TranslationExportStatus
-	{
-		Unknown = 0,
-		ExportReady = 200,
-		Processing = 202,
-		NoStringReady = 204
-	}
-
-	public class TranslationStatusResponse : BaseResponse
-	{
-		public TranslationStatusData Data { get; set; }
-	}
-
-	public class TranslationStatusData
-	{
-		public string FileName { get; set; }
-		public LocaleData Locale { get; set; }
-		public string Progress { get; set; }
-		public long StringCount { get; set; }
-		public long WordCount { get; set; }
 	}
 }

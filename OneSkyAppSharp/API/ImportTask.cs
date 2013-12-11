@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace com.lemonmojo.OneSkyAppSharp.API
+namespace com.lemonmojo.OneSkyAppSharp.API.ImportTask
 {
 	/// <summary>
-	/// Import Task
-	/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/import_task.md
-	/// API implementation status: 0/1
+	/// Import Task (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/import_task.md"/>)
 	/// </summary>
-	public static class ImportTask
+	/// <remarks>
+	/// API implementation status: 0/1
+	/// </remarks>
+	public static class ImportTaskAPI
 	{
 
 	}

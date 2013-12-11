@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace com.lemonmojo.OneSkyAppSharp.API
+namespace com.lemonmojo.OneSkyAppSharp.API.ProjectType
 {
 	/// <summary>
-	/// Project type
-	/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/project_type.md
-	/// API implementation status: 0/1
+	/// Project type (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/project_type.md"/>)
 	/// </summary>
-	public static class ProjectType
+	/// <remarks>
+	/// API implementation status: 0/1
+	/// </remarks>
+	public static class ProjectTypeAPI
 	{
 
 	}

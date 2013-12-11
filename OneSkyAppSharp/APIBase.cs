@@ -11,8 +11,11 @@ namespace com.lemonmojo.OneSkyAppSharp
 {
 	internal static class APIBase
 	{
+		#region Constants
 		private const string BASE_URL = "https://platform.api.onesky.io/1/";
+		#endregion Constants
 
+		#region Internal Methods
 		internal static T GetResponse<T>(APIConfiguration configuration, string methodName, Dictionary<string, object> arguments = null, Method action = Method.GET)
 		{
 			if (configuration == null) {
@@ -21,16 +24,23 @@ namespace com.lemonmojo.OneSkyAppSharp
 
 			VerifyAPIConfiguration(configuration);
 
+			if (arguments == null) {
+				arguments = new Dictionary<string, object>();
+			}
+
+			arguments = AddConfigurationToArguments(configuration, arguments);
+
 			RestClient client = new RestClient(BASE_URL);
+
+			if (!methodName.EndsWith("/")) {
+				methodName += "/";
+			}
+
+			methodName = AddArgumentsToMethodName(methodName, arguments);
+
 			RestRequest request = new RestRequest(methodName, action);
 
-			arguments = AddAuthenticationParameters(arguments, configuration.PublicKey, configuration.SecretKey);
-
-			foreach (string arg in arguments.Keys) {
-				object val = arguments[arg];
-
-				request.AddParameter(arg, val);
-			}
+			AddArgumentsToRequest(request, arguments);
 
 			IRestResponse response = client.Execute(request);
 
@@ -47,7 +57,9 @@ namespace com.lemonmojo.OneSkyAppSharp
 				throw new Exception("Unknown content type");
 			}
 		}
+		#endregion Internal Methods
 
+		#region Private Methods
 		private static string GetTimeStamp()
 		{
 			return DateTime.Now.ToUnixTimestamp().ToString();
@@ -58,26 +70,45 @@ namespace com.lemonmojo.OneSkyAppSharp
 			return (timeStamp + secretKey).CalculateMD5Hash().ToLower();
 		}
 
-		private static Dictionary<string, object> AddAuthenticationParameters(Dictionary<string, object> arguments, string publicKey, string secretKey)
-		{
-			if (arguments == null) {
-				arguments = new Dictionary<string, object>();
-			}
-
-			string timeStamp = GetTimeStamp();
-			string hash = GetDevHash(timeStamp, secretKey);
-
-			arguments["api_key"] = publicKey;
-			arguments["timestamp"] = timeStamp;
-			arguments["dev_hash"] = hash;
-
-			return arguments;
-		}
-
 		private static void VerifyAPIConfiguration(APIConfiguration configuration)
 		{
 			if (configuration == null) {
 				throw new ArgumentException("Configuration must not be null");
+			}
+		}
+
+		private static Dictionary<string, object> AddConfigurationToArguments(APIConfiguration configuration, Dictionary<string, object> arguments)
+		{
+			string apiKey = configuration.PublicKey;
+			string timeStamp = GetTimeStamp();
+			string devHash = GetDevHash(timeStamp, configuration.SecretKey);
+
+			arguments["api_key"] = apiKey;
+			arguments["timestamp"] = timeStamp;
+			arguments["dev_hash"] = devHash;
+
+			return arguments;
+		}
+
+		private static string AddArgumentsToMethodName(string methodName, Dictionary<string, object> arguments)
+		{
+			string paramSepChar = "?";
+
+			foreach (string arg in arguments.Keys) {
+				methodName += paramSepChar + arg + "={" + arg + "}";
+
+				paramSepChar = "&";
+			}
+
+			return methodName;
+		}
+
+		private static void AddArgumentsToRequest(RestRequest request, Dictionary<string, object> arguments)
+		{
+			foreach (string arg in arguments.Keys) {
+				object val = arguments[arg];
+
+				request.AddParameter(arg, val, ParameterType.UrlSegment);
 			}
 		}
 
@@ -87,7 +118,8 @@ namespace com.lemonmojo.OneSkyAppSharp
 				throw response.ErrorException;
 			}
 
-			if (response.StatusCode == HttpStatusCode.OK) {
+			if (response.StatusCode == HttpStatusCode.OK ||
+				response.StatusCode == HttpStatusCode.Created) {
 				return null;
 			}
 
@@ -97,6 +129,7 @@ namespace com.lemonmojo.OneSkyAppSharp
 
 			throw new Exception(resp.Meta.Message, new Exception(string.Format("Status: {0}", resp.Meta.Status)));
 		}
+		#endregion Private Methods
 
 		#region Utils
 		private static int ToUnixTimestamp(this DateTime dateTime)
@@ -120,39 +153,5 @@ namespace com.lemonmojo.OneSkyAppSharp
 			return sb.ToString();
 		}
 		#endregion Utils
-
-		/* #region API Calls
-		#region Translation
-		/// <summary>
-		/// Export - export translations in files
-		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/translation.md#export---export-translations-in-files
-		/// </summary>
-		public byte[] Translation_Export(string projectId, string locale, string sourceFileName, string exportFileName = null)
-		{
-			string methodName = string.Format("projects/{0}/translations", projectId);
-
-			Dictionary<string, string> args = new Dictionary<string, string>();
-			args["locale"] = locale;
-			args["source_file_name"] = sourceFileName;
-
-			if (!string.IsNullOrEmpty(exportFileName)) {
-				args["export_file_name"] = exportFileName;
-			}
-
-			return SendGetRequest(methodName, args) as byte[];
-		}
-		#endregion Translation
-
-		#region Project type
-		/// <summary>
-		/// List - list all project types
-		/// Documentation: https://github.com/onesky/api-documentation-platform/blob/master/resources/project_type.md#list---list-all-project-types
-		/// </summary>
-		public string ProjectType_List()
-		{
-			return SendGetRequest("project-types") as string;
-		}
-		#endregion Project type
-		#endregion API Calls */
 	}
 }
