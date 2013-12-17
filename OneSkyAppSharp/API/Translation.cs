@@ -8,7 +8,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Translation
 	/// Translation (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/translation.md"/>)
 	/// </summary>
 	/// <remarks>
-	/// API implementation status: 2/2
+	/// API implementation status: 100% (2/2)
 	/// </remarks>
 	public static class TranslationAPI
 	{

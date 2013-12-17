@@ -7,7 +7,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Quotation
 	/// Quotation (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/quotation.md"/>)
 	/// </summary>
 	/// <remarks>
-	/// API implementation status: 0/1
+	/// API implementation status: 0% (0/1)
 	/// </remarks>
 	public static class QuotationAPI
 	{

@@ -7,7 +7,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.ProjectType
 	/// Project type (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/project_type.md"/>)
 	/// </summary>
 	/// <remarks>
-	/// API implementation status: 1/1
+	/// API implementation status: 100% (1/1)
 	/// </remarks>
 	public static class ProjectTypeAPI
 	{

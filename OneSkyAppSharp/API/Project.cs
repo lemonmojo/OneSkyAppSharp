@@ -8,7 +8,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Project
 	/// Project (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/project.md"/>)
 	/// </summary>
 	/// <remarks>
-	/// API implementation status: 5/5
+	/// API implementation status: 100% (5/5)
 	/// </remarks>
 	public static class ProjectAPI
 	{

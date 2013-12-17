@@ -7,7 +7,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.File
 	/// File (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/file.md"/>)
 	/// </summary>
 	/// <remarks>
-	/// API implementation status: 1/3
+	/// API implementation status: 33% (1/3)
 	/// </remarks>
 	public static class FileAPI
 	{

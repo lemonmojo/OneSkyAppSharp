@@ -6,7 +6,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Locale
 	/// Locale (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/locale.md"/>)
 	/// </summary>
 	/// <remarks>
-	/// API implementation status: 1/1
+	/// API implementation status: 100% (1/1)
 	/// </remarks>
 	public static class LocaleAPI
 	{

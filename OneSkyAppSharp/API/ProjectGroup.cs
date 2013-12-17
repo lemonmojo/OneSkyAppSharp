@@ -8,7 +8,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.ProjectGroup
 	/// Project Group (<see cref="https://github.com/onesky/api-documentation-platform/blob/master/resources/project_group.md"/>)
 	/// </summary>
 	/// <remarks>
-	/// API implementation status: 6/6
+	/// API implementation status: 100% (6/6)
 	/// </remarks>
 	public static class ProjectGroupAPI
 	{

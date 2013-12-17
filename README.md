@@ -30,3 +30,14 @@ System.IO.File.WriteAllBytes(
 
 ### State of the library
 Because this library is mainly developed for my own purposes, only the functions I personally use are currently implemented. However, pull requests are very welcome!
+
+- [**Project Group**](https://github.com/onesky/api-documentation-platform/blob/master/resources/project_group.md) 100% (6/6)
+- [**Project**](https://github.com/onesky/api-documentation-platform/blob/master/resources/project.md) 100% (5/5)
+- [**File**](https://github.com/onesky/api-documentation-platform/blob/master/resources/file.md) 33% (1/3)
+- [**Translation**](https://github.com/onesky/api-documentation-platform/blob/master/resources/translation.md) 100% (2/2)
+- [**Import Task**](https://github.com/onesky/api-documentation-platform/blob/master/resources/import_task.md) 0% (0/1)
+- [**Quotation**](https://github.com/onesky/api-documentation-platform/blob/master/resources/quotation.md) 0% (0/1)
+- [**Order**](https://github.com/onesky/api-documentation-platform/blob/master/resources/order.md) 0% (0/3)
+- [**Screenshot**](https://github.com/onesky/api-documentation-platform/blob/master/resources/screenshot.md) 0% (0/1)
+- [**Locale**](https://github.com/onesky/api-documentation-platform/blob/master/resources/locale.md) 100% (1/1)
+- [**Project type**](https://github.com/onesky/api-documentation-platform/blob/master/resources/project_type.md) 100% (1/1)
