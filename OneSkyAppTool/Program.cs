@@ -142,12 +142,19 @@ namespace com.lemonmojo.OneSkyAppTool
 		{
 			LocaleListResponse localeList = Test_LocaleList();
 
+			ProjectTypeListResponse projectTypeList = Test_ProjectTypeList();
+
 			ProjectGroupCreateResponse projectGroupCreate = Test_ProjectGroupCreate("Just a Test");
 			ProjectGroupListResponse projectGroupList = Test_ProjectGroupList();
 
 			foreach (ProjectGroupData projectGroup in projectGroupList.Data) {
 				if (projectGroup.Name == "Just a Test") {
 					ProjectGroupRenameResponse projectGroupRename = Test_ProjectGroupRename(projectGroup.ID, "Just a Test RENAMED");
+
+					ProjectCreateResponse projectCreate = Test_ProjectCreate(projectGroup.ID, ProjectTypes.IPHONE_IPAD_APP, "Test Project", "Just a Description");
+					ProjectUpdateResponse projectUpdate = Test_ProjectUpdate(projectCreate.Data.ID, "Test Project RENAMED", "Just a Description RENAMED");
+					ProjectDeleteResponse projectDelete = Test_ProjectDelete(projectCreate.Data.ID);
+
 					ProjectGroupDeleteResponse projectGroupDelete = Test_ProjectGroupDelete(projectGroup.ID);
 					break;
 				}
@@ -159,10 +166,28 @@ namespace com.lemonmojo.OneSkyAppTool
 			ProjectListResponse projectList = Test_ProjectList(projectGroupShow.Data[0].ID);
 			ProjectShowResponse projectShow = Test_ProjectShow(projectList.Data[0].ID);
 
+			FileListResponse fileList = Test_FileList(projectList.Data[0].ID);
+
 			TranslationExportResponse translationExport = Test_TranslationExport(projectList.Data[0].ID);
 			TranslationStatusResponse translationStatus = Test_TranslationStatus(projectList.Data[0].ID, "Localizable.strings", "en");
 		}
 
+		#region File
+		private static FileListResponse Test_FileList(int projectId)
+		{
+			Console.WriteLine();
+			Console.WriteLine("== File List ==");
+			FileListResponse resp = FileAPI.List(projectId);
+
+			foreach (FileListData item in resp.Data) {
+				Console.WriteLine("File name: {0}, Uploaded at: {1}, String Count: {2}", item.Name, item.UploadedAt.ToString(), item.StringCount);
+			}
+
+			return resp;
+		}
+		#endregion File
+
+		#region Locale
 		private static LocaleListResponse Test_LocaleList()
 		{
 			Console.WriteLine();
@@ -175,33 +200,9 @@ namespace com.lemonmojo.OneSkyAppTool
 
 			return resp;
 		}
+		#endregion Locale
 
-		private static ProjectGroupListResponse Test_ProjectGroupList()
-		{
-			Console.WriteLine();
-			Console.WriteLine("== Project Group List ==");
-			ProjectGroupListResponse resp = ProjectGroupAPI.List();
-
-			foreach (ProjectGroupData item in resp.Data) {
-				Console.WriteLine(item.Name);
-			}
-
-			return resp;
-		}
-
-		private static ProjectGroupShowResponse Test_ProjectGroupShow(int projectGroupId)
-		{
-			Console.WriteLine();
-			Console.WriteLine("== Project Group Show ==");
-			ProjectGroupShowResponse resp = ProjectGroupAPI.Show(projectGroupId);
-
-			foreach (ProjectGroupDetailsData item in resp.Data) {
-				Console.WriteLine("{0}, Base Language Name: {1}", item.Name, item.BaseLanguage.LocalName);
-			}
-
-			return resp;
-		}
-
+		#region Project
 		private static ProjectListResponse Test_ProjectList(int projectGroupId)
 		{
 			Console.WriteLine();
@@ -223,6 +224,83 @@ namespace com.lemonmojo.OneSkyAppTool
 
 			foreach (ProjectDetailsData item in resp.Data) {
 				Console.WriteLine("{0}, Word Count: {1}", item.Name, item.WordCount);
+			}
+
+			return resp;
+		}
+
+		private static ProjectCreateResponse Test_ProjectCreate(int projectGroupId, string projectType, string name = "", string description = "")
+		{
+			Console.WriteLine();
+			Console.WriteLine("== Project Create ==");
+			ProjectCreateResponse resp = ProjectAPI.Create(projectGroupId, projectType, name, description);
+
+			if (resp.Meta.Status == 201) {
+				if (resp.Data != null) {
+					Console.WriteLine("Project created, Name: {0}, ID: {1}", resp.Data.Name, resp.Data.ID);
+				} else {
+					Console.WriteLine("Project created, No additional info available");
+				}
+			} else {
+				Console.WriteLine("Failed to create Project, Status: {0}", resp.Meta.Status);
+			}
+
+			return resp;
+		}
+
+		private static ProjectUpdateResponse Test_ProjectUpdate(int projectId, string name = "", string description = "")
+		{
+			Console.WriteLine();
+			Console.WriteLine("== Project Update ==");
+			ProjectUpdateResponse resp = ProjectAPI.Update(projectId, name, description);
+
+			if (resp.Meta.Status == 200) {
+				Console.WriteLine("Project updated");
+			} else {
+				Console.WriteLine("Failed to update Project, Status: {0}", resp.Meta.Status);
+			}
+
+			return resp;
+		}
+
+		private static ProjectDeleteResponse Test_ProjectDelete(int projectId)
+		{
+			Console.WriteLine();
+			Console.WriteLine("== Project Delete ==");
+			ProjectDeleteResponse resp = ProjectAPI.Delete(projectId);
+
+			if (resp.Meta.Status == 200) {
+				Console.WriteLine("Project deleted");
+			} else {
+				Console.WriteLine("Failed to delete Project, Status: {0}", resp.Meta.Status);
+			}
+
+			return resp;
+		}
+		#endregion Project
+
+		#region Project Group
+		private static ProjectGroupListResponse Test_ProjectGroupList()
+		{
+			Console.WriteLine();
+			Console.WriteLine("== Project Group List ==");
+			ProjectGroupListResponse resp = ProjectGroupAPI.List();
+
+			foreach (ProjectGroupData item in resp.Data) {
+				Console.WriteLine(item.Name);
+			}
+
+			return resp;
+		}
+
+		private static ProjectGroupShowResponse Test_ProjectGroupShow(int projectGroupId)
+		{
+			Console.WriteLine();
+			Console.WriteLine("== Project Group Show ==");
+			ProjectGroupShowResponse resp = ProjectGroupAPI.Show(projectGroupId);
+
+			foreach (ProjectGroupDetailsData item in resp.Data) {
+				Console.WriteLine("{0}, Base Language Name: {1}", item.Name, item.BaseLanguage.LocalName);
 			}
 
 			return resp;
@@ -291,7 +369,24 @@ namespace com.lemonmojo.OneSkyAppTool
 
 			return resp;
 		}
+		#endregion Project Group
 
+		#region Project Type
+		private static ProjectTypeListResponse Test_ProjectTypeList()
+		{
+			Console.WriteLine();
+			Console.WriteLine("== Project Type List ==");
+			ProjectTypeListResponse resp = ProjectTypeAPI.List();
+
+			foreach (ProjectTypeData item in resp.Data) {
+				Console.WriteLine("Code: {0}, Name: {1}", item.Code, item.Name);
+			}
+
+			return resp;
+		}
+		#endregion Project Type
+
+		#region Translation
 		private static TranslationExportResponse Test_TranslationExport(int projectId)
 		{
 			Console.WriteLine();
@@ -315,6 +410,7 @@ namespace com.lemonmojo.OneSkyAppTool
 
 			return resp;
 		}
+		#endregion Translation
 		#endregion Tests
 	}
 }

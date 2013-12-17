@@ -5,23 +5,24 @@ using com.lemonmojo.OneSkyAppSharp.API.Locale;
 namespace com.lemonmojo.OneSkyAppSharp.API.Translation
 {
 	#region Response Classes
-
-	#endregion Response Classes
-
-	#region Data Classes
-
-	#endregion Data Classes
 	public class TranslationExportResponse
 	{
 		public TranslationExportMetadata Meta { get; set; }
 		public byte[] Data { get; set; }
 	}
 
+	public class TranslationStatusResponse : BaseResponse
+	{
+		public TranslationStatusData Data { get; set; }
+	}
+	#endregion Response Classes
+
+	#region Data Classes
 	public class TranslationExportMetadata
 	{
 		public TranslationExportStatus Status { get; set; }
 	}
-
+	
 	public enum TranslationExportStatus
 	{
 		Unknown = 0,
@@ -29,12 +30,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Translation
 		Processing = 202,
 		NoStringReady = 204
 	}
-
-	public class TranslationStatusResponse : BaseResponse
-	{
-		public TranslationStatusData Data { get; set; }
-	}
-
+	
 	public class TranslationStatusData
 	{
 		public string FileName { get; set; }
@@ -43,4 +39,6 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Translation
 		public long StringCount { get; set; }
 		public long WordCount { get; set; }
 	}
+	#endregion Data Classes
+
 }

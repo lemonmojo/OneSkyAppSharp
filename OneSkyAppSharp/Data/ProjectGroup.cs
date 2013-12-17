@@ -5,13 +5,6 @@ using com.lemonmojo.OneSkyAppSharp.API.Locale;
 namespace com.lemonmojo.OneSkyAppSharp.API.ProjectGroup
 {
 	#region Response Classes
-
-	#endregion Response Classes
-
-	#region Data Classes
-
-	#endregion Data Classes
-
 	public class ProjectGroupListResponse : BaseResponse
 	{
 		public List<ProjectGroupData> Data { get; set; }
@@ -41,7 +34,9 @@ namespace com.lemonmojo.OneSkyAppSharp.API.ProjectGroup
 	{
 		public ProjectGroupListLanguagesData Data { get; set; }
 	}
+	#endregion Response Classes
 
+	#region Data Classes
 	public class ProjectGroupData
 	{
 		public int ID { get; set; }
@@ -71,4 +66,5 @@ namespace com.lemonmojo.OneSkyAppSharp.API.ProjectGroup
 		public int Count { get; set; }
 		public List<LocaleData> Languages { get; set; }
 	}
+	#endregion Data Classes
 }
