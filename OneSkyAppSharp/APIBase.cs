@@ -62,7 +62,7 @@ namespace com.lemonmojo.OneSkyAppSharp
 		#region Private Methods
 		private static string GetTimeStamp()
 		{
-			return DateTime.Now.ToUnixTimestamp().ToString();
+			return DateTime.UtcNow.ToUnixTimestamp().ToString();
 		}
 
 		private static string GetDevHash(string timeStamp, string secretKey)
@@ -134,7 +134,7 @@ namespace com.lemonmojo.OneSkyAppSharp
 		#region Utils
 		private static int ToUnixTimestamp(this DateTime dateTime)
 		{
-			return (int)(dateTime - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
+			return (int)(dateTime - new DateTime(1970, 1, 1)).TotalSeconds;
 		}
 
 		private static string CalculateMD5Hash(this string input)
