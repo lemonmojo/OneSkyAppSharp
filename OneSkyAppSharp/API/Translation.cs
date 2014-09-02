@@ -38,7 +38,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Translation
 
 			TranslationExportResponse dataResponse = new TranslationExportResponse() {
 				Meta = new TranslationExportMetadata() { Status = status },
-				Data = resp.RawBytes
+				Data = resp.Content
 			};
 
 			return dataResponse;

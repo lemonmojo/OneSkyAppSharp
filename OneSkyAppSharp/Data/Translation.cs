@@ -8,7 +8,7 @@ namespace com.lemonmojo.OneSkyAppSharp.API.Translation
 	public class TranslationExportResponse
 	{
 		public TranslationExportMetadata Meta { get; set; }
-		public byte[] Data { get; set; }
+		public string Data { get; set; }
 	}
 
 	public class TranslationStatusResponse : BaseResponse

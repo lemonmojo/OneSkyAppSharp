@@ -37,7 +37,7 @@ namespace com.lemonmojo.OneSkyAppTool
 
 		private static void ExportTranslationSample()
 		{
-			System.IO.File.WriteAllBytes(
+			System.IO.File.WriteAllText(
 				"/Path/File.zip", // Output Filepath
 				com.lemonmojo.OneSkyAppSharp.API.Translation.TranslationAPI.Export(
 					1234, // Project ID
@@ -88,14 +88,14 @@ namespace com.lemonmojo.OneSkyAppTool
 						throw new Exception(string.Format("Translation file not ready, status: {0}", resp.Meta.Status.ToString()));
 					}
 
-					byte[] fileContent = resp.Data;
+					string fileContent = resp.Data;
 
 					if (fileContent == null ||
 						fileContent.Length <= 0) {
 						throw new Exception("Empty response");
 					}
 
-					System.IO.File.WriteAllBytes(outFilename, fileContent);
+					System.IO.File.WriteAllText(outFilename, fileContent);
 				} else {
 					throw new Exception("Unknown command: " + methodName);
 				}
