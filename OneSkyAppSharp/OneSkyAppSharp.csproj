@@ -19,22 +19,4 @@
     <PackageReference Include="RestSharp" Version="104.4.0" />
   </ItemGroup>
   
-  <ItemGroup>
-    <Compile Remove="Libraries\**" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <EmbeddedResource Remove="Libraries\**" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <None Remove="Libraries\**" />
-  </ItemGroup>
-  
-<!--  <ItemGroup>-->
-<!--    <Reference Include="RestSharp">-->
-<!--      <HintPath>Libraries\RestSharp.dll</HintPath>-->
-<!--    </Reference>-->
-<!--  </ItemGroup>-->
-  
 </Project>
