@@ -1,75 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>com.lemonmojo.OneSkyAppSharp</RootNamespace>
+    <Product>OneSkyAppSharp</Product>
+    <Description>OneSkyAppSharp is a mono compatible implementation of the OneSky API written in C#..</Description>
+    <Company>Lemon Mojo</Company>
+    <Copyright>Copyright (c) 2013 Lemon Mojo</Copyright>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <AssemblyName>OneSkyAppSharp</AssemblyName>
+    <AssemblyTitle>OneSkyAppSharp</AssemblyTitle>
+    <TargetFramework>net47</TargetFramework>
+    <RootNamespace>com.lemonmojo.OneSkyAppSharp</RootNamespace>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="RestSharp">
-      <HintPath>Libraries\RestSharp.dll</HintPath>
-    </Reference>
+    <PackageReference Include="RestSharp" Version="104.4.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="API\Locale.cs" />
-    <Compile Include="APIConfiguration.cs" />
-    <Compile Include="API\ProjectGroup.cs" />
-    <Compile Include="BaseResponse.cs" />
-    <Compile Include="APIBase.cs" />
-    <Compile Include="Metadata.cs" />
-    <Compile Include="API\Translation.cs" />
-    <Compile Include="API\Project.cs" />
-    <Compile Include="API\File.cs" />
-    <Compile Include="API\ImportTask.cs" />
-    <Compile Include="API\Quotation.cs" />
-    <Compile Include="API\Order.cs" />
-    <Compile Include="API\Screenshot.cs" />
-    <Compile Include="API\ProjectType.cs" />
-    <Compile Include="Data\Locale.cs" />
-    <Compile Include="Data\File.cs" />
-    <Compile Include="Data\ImportTask.cs" />
-    <Compile Include="Data\Order.cs" />
-    <Compile Include="Data\ProjectGroup.cs" />
-    <Compile Include="Data\Project.cs" />
-    <Compile Include="Data\ProjectType.cs" />
-    <Compile Include="Data\Quotation.cs" />
-    <Compile Include="Data\Screenshot.cs" />
-    <Compile Include="Data\Translation.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="API\" />
-    <Folder Include="Libraries\" />
-    <Folder Include="Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Libraries\RestSharp.dll" />
-    <None Include="Libraries\RestSharp.dll.mdb" />
-    <None Include="Libraries\RestSharp.xml" />
-  </ItemGroup>
+  
 </Project>
