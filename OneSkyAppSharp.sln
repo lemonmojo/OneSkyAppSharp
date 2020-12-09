@@ -1,34 +1,28 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSkyAppTool", "OneSkyAppTool\OneSkyAppTool.csproj", "{2C948AB6-AFF0-4AA9-8414-A1B0B0B81302}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSkyAppSharp", "OneSkyAppSharp\OneSkyAppSharp.csproj", "{2FB47294-22D7-4917-9F20-41A3BEA14A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSkyAppSharp", "OneSkyAppSharp\OneSkyAppSharp.csproj", "{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSkyAppTool", "OneSkyAppTool\OneSkyAppTool.csproj", "{360D6168-A9ED-47CE-A563-803ABA4581C8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED069D82-F842-4CBC-8275-3738B920F198}"
-	ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{8A658BDC-04C6-4596-B8E5-54FB505CA29A}"
+ProjectSection(SolutionItems) = preProject
+	LICENSE = LICENSE
+	README.md = README.md
+EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C948AB6-AFF0-4AA9-8414-A1B0B0B81302}.Debug|x86.ActiveCfg = Debug|x86
-		{2C948AB6-AFF0-4AA9-8414-A1B0B0B81302}.Debug|x86.Build.0 = Debug|x86
-		{2C948AB6-AFF0-4AA9-8414-A1B0B0B81302}.Release|x86.ActiveCfg = Release|x86
-		{2C948AB6-AFF0-4AA9-8414-A1B0B0B81302}.Release|x86.Build.0 = Release|x86
-		{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}.Debug|x86.Build.0 = Debug|Any CPU
-		{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}.Release|x86.ActiveCfg = Release|Any CPU
-		{C5B1AD96-35DB-4A8B-8BE9-24E583CDD0E4}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = OneSkyAppTool\OneSkyAppTool.csproj
+		{2FB47294-22D7-4917-9F20-41A3BEA14A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB47294-22D7-4917-9F20-41A3BEA14A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB47294-22D7-4917-9F20-41A3BEA14A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB47294-22D7-4917-9F20-41A3BEA14A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360D6168-A9ED-47CE-A563-803ABA4581C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360D6168-A9ED-47CE-A563-803ABA4581C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360D6168-A9ED-47CE-A563-803ABA4581C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360D6168-A9ED-47CE-A563-803ABA4581C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
